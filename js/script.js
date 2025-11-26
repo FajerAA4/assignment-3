@@ -23,6 +23,8 @@ window.addEventListener("DOMContentLoaded", () => {
     setupContactForm();
     loadWeather();
     startVisitTimer();
+    setupAuth();
+
     // Add event listeners
     document.getElementById("searchInput").addEventListener("input", applyFilter);
     document.getElementById("filterSelect").addEventListener("change", applyFilter);
@@ -284,3 +286,35 @@ function startVisitTimer() {
         }
     }, 1000);
 }
+function setupAuth() {
+    const loginBtn = document.getElementById("loginBtn");
+    const logoutBtn = document.getElementById("logoutBtn");
+    const status = document.getElementById("loginStatus");
+
+    function updateUI() {
+        const user = localStorage.getItem("userLoggedIn");
+
+        if (user === "true") {
+            status.textContent = "You are logged in ✔️";
+            loginBtn.style.display = "none";
+            logoutBtn.style.display = "inline-block";
+        } else {
+            status.textContent = "You are logged out ❌";
+            loginBtn.style.display = "inline-block";
+            logoutBtn.style.display = "none";
+        }
+    }
+
+    loginBtn.addEventListener("click", () => {
+        localStorage.setItem("userLoggedIn", "true");
+        updateUI();
+    });
+
+    logoutBtn.addEventListener("click", () => {
+        localStorage.setItem("userLoggedIn", "false");
+        updateUI();
+    });
+
+    updateUI();
+}
+
