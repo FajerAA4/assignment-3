@@ -90,9 +90,9 @@ async function loadQuote() {
 
 // Project List
 const projects = [
-    { title: "Single Cycle CPU", tag: "hardware",img: "assets/img_1.png", desc: "Built a CPU using Logisim for COE301." },
-    { title: "Event Management App", tag: "app", desc: "Designed a Figma prototype for SWE206.",img: "assets/img.png" },
-    { title: "UI Components Library", tag: "implemenation", desc: "Created a MYSQL database and a simple UI." ,img: "assets/img_2.png"}
+    { title: "Single Cycle CPU", tag: "hardware",level: "advanced", date: "2025-04-10",img: "assets/img_1.png", desc: "Built a CPU using Logisim for COE301." },
+    { title: "Event Management App", tag: "app",level: "beginner", date: "2025-5-01", desc: "Designed a Figma prototype for SWE206.",img: "assets/img.png" },
+    { title: "UI Components Library", tag: "implemenation",level: "intermediate", date: "2025-11-2", desc: "Created a MYSQL database and a simple UI." ,img: "assets/img_2.png"}
 ];
 
 
@@ -113,6 +113,7 @@ function renderProjects(list) {
           <img src="${p.img}" alt="${p.title}">
           <h3>${p.title}</h3>
           <p>${p.desc}</p>
+          <p><strong>Level:</strong> ${p.level}</p>
             <button class="tag" onclick="alert('Feature coming soon!')">${p.tag}</button>
     `;
         container.appendChild(card);
