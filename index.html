@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>My professional Portfolio</title>
+    <!--link to external css-->
+    <link rel="stylesheet" href="css/styles.css">
+
+</head>
+<body>
+<!--header with profile picture, navigation and dark mode-->
+<header>
+    <img src="assets/img_3.png" alt="My Profile Picture">
+    <h1>My Professional Portfolio</h1>
+    <nav>
+        <a href="#about">About Me</a>
+        <a href="#projects">Projects</a>
+        <a href="#contact">Contact Me</a>
+    </nav>
+    <button onclick="toggleTheme()"> Toggle Dark Mode</button>
+</header>
+<!-- Greeting message Section updated by the js file  -->
+<section id="greeting">
+    <h2 id="greet-text">Hello!</h2>
+</section>
+<!--about me section-->
+<section id="about">
+    <h2>About Me</h2>
+    <p> Hello! my name is Fajer Alyami, A CS student at KFUPM.
+        I am currently in my junior year, I hope I graduate soon inshallah. </p>
+    <p> "Motivated undergraduate with problem-solving skills."</p>
+</section>
+
+<!--weather section-->
+<section id="weather">
+    <h2>Current Weather</h2>
+    <div id="weather-box" class="project-card" style="text-align:center;">
+        Loading weather...
+    </div>
+</section>
+
+<!--projects section-->
+<section id="projects">
+    <h2>Projects</h2>
+    <!-- Filter and Search Controls -->
+    <div class="controls">
+        <input id="searchInput" type="search" placeholder="Search projects...">
+        <select id="filterSelect">
+            <option value="all">All</option>
+            <option value="hardware">hardware</option>
+            <option value="implemenation">implemenation</option>
+            <option value="app">App</option>
+        </select>
+    </div>
+
+    <div id="projectList" class="projects">
+        <!-- project cards will be generated here -->
+    </div>
+
+    <p id="emptyMessage" style="display:none; text-align:center; color:gray;">
+        No projects found.
+    </p>
+</section>
+
+<!--contact section with form-->
+<section id="contact">
+    <h2>Contact Me</h2>
+    <form id="contactForm" novalidate>
+        <input id="name" type="text" placeholder="Your Name" required />
+        <input id="email" type="email" placeholder="Your Email" required />
+        <textarea id="message" rows="5" placeholder="Your Message" required></textarea>
+        <button type="submit">Send Message</button>
+        <p id="formFeedback" style="display:none; text-align:center; margin-top:10px;"></p>
+    </form>
+</section>
+<!-- link to external js-->
+<script src="js/script.js"></script>
+
+</body>
+</html>
