@@ -21,10 +21,15 @@ window.addEventListener("DOMContentLoaded", () => {
     loadQuote();
     applyFilter();
     setupContactForm();
-    loadWeather()
+    loadWeather();
+    startVisitTimer();
     // Add event listeners
     document.getElementById("searchInput").addEventListener("input", applyFilter);
     document.getElementById("filterSelect").addEventListener("change", applyFilter);
+    const levelSelect = document.getElementById("levelSelect");
+    const sortSelect = document.getElementById("sortSelect");
+    if (levelSelect) levelSelect.addEventListener("change", applyFilter);
+    if (sortSelect) sortSelect.addEventListener("change", applyFilter);
 
 });
 
@@ -125,12 +130,51 @@ function renderProjects(list) {
 function applyFilter() {
     const searchTerm = document.getElementById("searchInput").value.toLowerCase();
     const filterTag = document.getElementById("filterSelect").value;
-    const filtered = projects.filter(p =>
+    const levelFilter = document.getElementById("levelSelect")
+        ? document.getElementById("levelSelect").value
+        : "all";
+    const sortBy = document.getElementById("sortSelect")
+        ? document.getElementById("sortSelect").value
+        : "newest";
+
+    // 1) filter by tag + level + search
+    let filtered = projects.filter(p =>
         (filterTag === "all" || p.tag === filterTag) &&
+        (levelFilter === "all" || p.level === levelFilter) &&
         (p.title.toLowerCase().includes(searchTerm) || p.desc.toLowerCase().includes(searchTerm))
     );
+
+    // 2) sort result
+    filtered.sort((a, b) => {
+        if (sortBy === "newest") {
+            return new Date(b.date) - new Date(a.date);
+        } else if (sortBy === "oldest") {
+            return new Date(a.date) - new Date(b.date);
+        } else if (sortBy === "title-az") {
+            return a.title.localeCompare(b.title);
+        } else if (sortBy === "title-za") {
+            return b.title.localeCompare(a.title);
+        }
+        return 0;
+    });
+
+    // 3) update message depending on level
+    const hint = document.getElementById("projectHint");
+    if (hint) {
+        if (levelFilter === "beginner") {
+            hint.textContent = "Showing beginner-friendly projects — great place to start! 🌱";
+        } else if (levelFilter === "intermediate") {
+            hint.textContent = "Showing intermediate projects — some experience recommended. 💡";
+        } else if (levelFilter === "advanced") {
+            hint.textContent = "Showing advanced projects — deep technical work. 🚀";
+        } else {
+            hint.textContent = "Showing all projects (mixed levels).";
+        }
+    }
+
     renderProjects(filtered);
 }
+
 //Contact form validation and confirmation
 function setupContactForm() {
     const form = document.getElementById("contactForm");

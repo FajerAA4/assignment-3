@@ -24,6 +24,7 @@
 <section id="greeting">
     <h2 id="greet-text">Hello!</h2>
 </section>
+
 <!--about me section-->
 <section id="about">
     <h2>About Me</h2>
@@ -47,12 +48,31 @@
     <div class="controls">
         <input id="searchInput" type="search" placeholder="Search projects...">
         <select id="filterSelect">
-            <option value="all">All</option>
+            <option value="all">All Types</option>
             <option value="hardware">hardware</option>
             <option value="implemenation">implemenation</option>
             <option value="app">App</option>
         </select>
+
+    <!-- NEW: Filter by level -->
+    <select id="levelSelect">
+        <option value="all">All Levels</option>
+        <option value="beginner">Beginner</option>
+        <option value="intermediate">Intermediate</option>
+        <option value="advanced">Advanced</option>
+    </select>
+
+    <!-- NEW: Sort options -->
+    <select id="sortSelect">
+        <option value="newest">Newest first</option>
+        <option value="oldest">Oldest first</option>
+        <option value="title-az">Title A–Z</option>
+        <option value="title-za">Title Z–A</option>
+    </select>
     </div>
+    <p id="projectHint" style="text-align:center; color:#666; margin-top:0.5rem;">
+        Showing all projects (mixed levels).
+    </p>
 
     <div id="projectList" class="projects">
         <!-- project cards will be generated here -->
