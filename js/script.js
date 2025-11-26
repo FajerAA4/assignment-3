@@ -267,3 +267,20 @@ async function loadWeather() {
         `;
     }
 }
+function startVisitTimer() {
+    const timerEl = document.getElementById("visit-timer");
+    if (!timerEl) return;
+
+    let seconds = 0;
+
+    setInterval(() => {
+        seconds++;
+        if (seconds < 60) {
+            timerEl.textContent = `You have been on this page for ${seconds} second${seconds === 1 ? "" : "s"}.`;
+        } else {
+            const mins = Math.floor(seconds / 60);
+            const secs = seconds % 60;
+            timerEl.textContent = `You have been on this page for ${mins} min ${secs} sec.`;
+        }
+    }, 1000);
+}
