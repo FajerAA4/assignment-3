@@ -24,6 +24,7 @@ window.addEventListener("DOMContentLoaded", () => {
     loadWeather();
     startVisitTimer();
     setupAuth();
+    setupProjectToggle();
 
     // Add event listeners
     document.getElementById("searchInput").addEventListener("input", applyFilter);
@@ -316,5 +317,31 @@ function setupAuth() {
     });
 
     updateUI();
+}
+function setupProjectToggle() {
+    const btn = document.getElementById("toggleProjectsBtn");
+    const section = document.getElementById("projects");
+
+    // Load saved state
+    const hidden = localStorage.getItem("projectsHidden") === "true";
+
+    if (hidden) {
+        section.style.display = "none";
+        btn.textContent = "Show Projects";
+    }
+
+    btn.addEventListener("click", () => {
+        const isHidden = section.style.display === "none";
+
+        if (isHidden) {
+            section.style.display = "block";
+            btn.textContent = "Hide Projects";
+            localStorage.setItem("projectsHidden", "false");
+        } else {
+            section.style.display = "none";
+            btn.textContent = "Show Projects";
+            localStorage.setItem("projectsHidden", "true");
+        }
+    });
 }
 

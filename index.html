@@ -7,16 +7,15 @@
     <!--link to external css-->
     <link rel="stylesheet" href="css/styles.css">
 
-    <div id="auth-section" style="margin-top:10px;">
-        <button id="loginBtn">Login</button>
-        <button id="logoutBtn" style="display:none;">Logout</button>
-        <p id="loginStatus" style="font-size:0.9rem; margin-top:5px;"></p>
-    </div>
-
-
 </head>
 <body>
 <!--header with profile picture, navigation and dark mode-->
+<div id="auth-section" style="margin-top:10px;">
+    <button id="loginBtn">Login</button>
+    <button id="logoutBtn" style="display:none;">Logout</button>
+    <p id="loginStatus" style="font-size:0.9rem; margin-top:5px;"></p>
+</div>
+
 <header>
     <img src="assets/img_3.png" alt="My Profile Picture">
     <h1>My Professional Portfolio</h1>
@@ -52,8 +51,15 @@
 </section>
 
 <!--projects section-->
-<section id="projects">
+<section id="projects-section">
+
     <h2>Projects</h2>
+    <button id="toggleProjectsBtn" style="margin-bottom:15px;">
+        Hide Projects
+    </button>
+<section id="projects">
+
+
     <!-- Filter and Search Controls -->
     <div class="controls">
         <input id="searchInput" type="search" placeholder="Search projects...">
@@ -92,7 +98,7 @@
         No projects found.
     </p>
 </section>
-
+</section>
 <!--contact section with form-->
 <section id="contact">
     <h2>Contact Me</h2>
