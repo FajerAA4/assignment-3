@@ -1,4 +1,6 @@
 // Dark/Light Theme Toggle
+let visitTimerId = null;
+
 function toggleTheme() {
     const body = document.body;
     body.classList.toggle("dark-mode");
@@ -22,9 +24,10 @@ window.addEventListener("DOMContentLoaded", () => {
     applyFilter();
     setupContactForm();
     loadWeather();
-    startVisitTimer();
     setupAuth();
     setupProjectToggle();
+    setupNameMemory();
+    startVisitTimer();
 
     // Add event listeners
     document.getElementById("searchInput").addEventListener("input", applyFilter);
@@ -275,8 +278,9 @@ function startVisitTimer() {
     if (!timerEl) return;
 
     let seconds = 0;
+    if (visitTimerId) clearInterval(visitTimerId);
 
-    setInterval(() => {
+    visitTimerId =setInterval(() => {
         seconds++;
         if (seconds < 60) {
             timerEl.textContent = `You have been on this page for ${seconds} second${seconds === 1 ? "" : "s"}.`;
@@ -313,8 +317,18 @@ function setupAuth() {
 
     logoutBtn.addEventListener("click", () => {
         localStorage.setItem("userLoggedIn", "false");
+        if (visitTimerId) clearInterval(visitTimerId);
+        document.getElementById("visit-timer").textContent = "You have just arrived ";
+        localStorage.removeItem("visitorName");
+
+        const msg = document.getElementById("savedNameMessage");
+        if (msg) msg.textContent = "";
+
+        const input = document.getElementById("saveNameInput");
+        if (input) input.value = "";
         updateUI();
     });
+
 
     updateUI();
 }
@@ -342,6 +356,27 @@ function setupProjectToggle() {
             btn.textContent = "Show Projects";
             localStorage.setItem("projectsHidden", "true");
         }
+    });
+}
+function setupNameMemory() {
+    const input = document.getElementById("saveNameInput");
+    const btn = document.getElementById("saveNameBtn");
+    const msg = document.getElementById("savedNameMessage");
+
+    const savedName = localStorage.getItem("visitorName");
+
+    // Show old name
+    if (savedName) {
+        msg.textContent = `Welcome back, ${savedName}!`;
+    }
+
+    btn.addEventListener("click", () => {
+        const name = input.value.trim();
+        if (name.length < 1) return;
+
+        localStorage.setItem("visitorName", name);
+        msg.textContent = `Welcome back, ${name}!`;
+        input.value = "";
     });
 }
 
