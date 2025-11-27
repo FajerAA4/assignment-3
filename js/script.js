@@ -110,9 +110,9 @@ async function loadQuote() {
 
 // Project List
 const projects = [
-    { title: "Single Cycle CPU", tag: "hardware",level: "advanced", date: "2025-04-10",img: "assets/img_1.png", desc: "Built a CPU using Logisim for COE301." },
-    { title: "Event Management App", tag: "app",level: "beginner", date: "2025-5-01", desc: "Designed a Figma prototype for SWE206.",img: "assets/img.png" },
-    { title: "UI Components Library", tag: "implemenation",level: "intermediate", date: "2025-11-2", desc: "Created a MYSQL database and a simple UI." ,img: "assets/img_2.png"}
+    { title: "Single Cycle CPU", tag: "hardware",level: "advanced", date: "2025-04-10",img: "assets/img_1.webp", desc: "Built a CPU using Logisim for COE301." },
+    { title: "Event Management App", tag: "app",level: "beginner", date: "2025-5-01", desc: "Designed a Figma prototype for SWE206.",img: "assets/img.webp"},
+    { title: "UI Components Library", tag: "implemenation",level: "intermediate", date: "2025-11-2", desc: "Created a MYSQL database and a simple UI." ,img: "assets/img_2.webp"}
 ];
 
 
@@ -130,7 +130,7 @@ function renderProjects(list) {
         const card = document.createElement("div");
         card.className = "project-card";
         card.innerHTML = `
-          <img src="${p.img}" alt="${p.title}">
+          <img src="${p.img}" loading="lazy" alt="${p.title}">
           <h3>${p.title}</h3>
           <p>${p.desc}</p>
           <p><strong>Level:</strong> ${p.level}</p>
