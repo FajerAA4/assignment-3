@@ -45,7 +45,6 @@ function updateGreeting() {
     const hour = new Date().getHours();
     const name = localStorage.getItem("visitorName");
     let greeting = "";
-    let emoji="";
 
     if (hour < 12) {
         greeting= "Good Morning! 🌅 ";
@@ -56,9 +55,9 @@ function updateGreeting() {
     }
     // If name exists, attach it
     if (name) {
-        greetText.textContent = `${greeting}, ${name}! ${emoji}`;
+        greetText.textContent = `${greeting}, ${name}!`;
     } else {
-        greetText.textContent = `${greeting}! ${emoji}`;
+        greetText.textContent = `${greeting}!`;
     }
 }
 // Fetch quote API

@@ -1,0 +1,269 @@
+/* base body styling*/
+body{
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    line-height:1.6;
+    transition: background 0.4s ease,color 0.4s ease;
+    scroll-behavior: smooth;
+}
+/* header styling (Gradient background, white text) */
+header{
+    background: linear-gradient(90deg, #e91e63, #6a1b9a);
+    color: #fff;
+    padding: 1rem;
+    text-align: center;
+    animation: fadeInDown 0.8s ease-out;
+}
+/* navigation link*/
+nav a{
+    color: #fff;
+    margin: 0 10px;
+    text-decoration: none;
+    font-weight: bold;
+    position: relative;
+    transition: color 0.3s;
+}
+nav a::after {
+    content: "";
+    position: absolute;
+    width: 0;
+    height: 2px;
+    left: 0;
+    bottom: -4px;
+    background: #fff;
+    transition: width 0.3s ease;
+}
+nav a:hover::after {
+    width: 100%;
+}
+nav a:hover {
+    color: #ffeb3b;
+}
+
+/* general section layout*/
+section{
+    padding: 2rem;
+    max-width:900px;
+    margin: auto;
+    opacity: 0;
+    transform: translateY(40px);
+    animation: fadeUp 1s ease forwards;
+}
+/* section titles */
+h2{
+    border-bottom: 2px solid #333;
+    padding-bottom: 5px;
+}
+/* About section profile section */
+#about img{
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    margin-top: 10px;
+    transition: transform 0.3s ease;
+}
+#about img:hover {
+    transform: scale(1.1) rotate(5deg);
+}
+/* Projects layout */
+.projects{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    justify-content: center;
+}
+/* project card styling*/
+.project-card{
+    flex: 1 1 250px;
+    border: 1px solid #ccc;
+    padding: 1rem;
+    border-radius: 8px;
+    text-align: center;
+    background: #f9f9f9;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    animation: fadeIn 1s ease both;
+}
+.project-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+    background: #fff;
+}
+.project-card img{
+    width: 100%;
+    height: 250px;
+    object-fit: contain;
+}
+header img {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+}
+/* Filter and Search Controls */
+.controls {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 1rem;
+}
+.controls input,
+.controls select {
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    font-size: 1rem;
+    transition: border-color 0.3s ease;
+}
+.controls input:focus,
+.controls select:focus {
+    border-color: #6a1b9a;
+    outline: none;
+}
+
+/* Project Tag Styling */
+.tag {
+    display: inline-block;
+    margin-top: 10px;
+    padding: 4px 10px;
+    border-radius: 20px;
+    background: linear-gradient(90deg, #e91e63, #6a1b9a);
+    color: white;
+    font-size: 0.8rem;
+}
+
+/* contact from section */
+form{
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+    animation: fadeUp 1s ease forwards;
+}
+/* inputs, textarea, and button style*/
+input,textarea, button{
+    padding: 10px;
+    font-size: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    transition: box-shadow 0.3s ease, transform 0.2s ease;
+}
+input:focus, textarea:focus {
+    box-shadow: 0 0 6px #e91e63;
+    transform: scale(1.02);
+}
+/* button gradient style*/
+button{
+    background: linear-gradient(90deg, #e91e63, #6a1b9a);
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 25px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+}
+button:hover{
+    opacity: 0.9;
+    transform: scale(1.05);
+}
+/* Feedback message animation */
+#formFeedback {
+    transition: opacity 0.8s ease, transform 0.6s ease;
+}
+/* dark mode overrides */
+.dark-mode{
+    background: #121212;
+    color: #eee;
+}
+.dark-mode h2{
+    border-bottom: #eee;
+}
+.dark-mode .project-card{
+    background: #1e1e1e;
+    border: 1px solid #444;
+}
+/* Keyframe Animations */
+@keyframes fadeIn {
+    from { opacity: 0; transform: scale(0.95); }
+    to { opacity: 1; transform: scale(1); }
+}
+@keyframes fadeUp {
+    from { opacity: 0; transform: translateY(40px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+@keyframes fadeInDown {
+    from {
+        opacity: 0;
+        transform: translateY(-30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+/* responsive design*/
+/* Large devices (desktops, 1024px and up) */
+@media (min-width: 1024px) {
+    header h1 {
+        font-size: 2.5rem;
+    }
+    nav a {
+        font-size: 1.1rem;
+    }
+    section {
+        padding: 3rem;
+    }
+}
+
+/* Medium devices (tablets, 768px to 1023px) */
+@media (max-width: 1023px) and (min-width: 768px) {
+    header h1 {
+        font-size: 2rem;
+    }
+    nav a {
+        font-size: 1rem;
+        margin: 0 5px;
+    }
+    .projects {
+        flex-direction: row;
+        flex-wrap: wrap;
+    }
+    .project-card {
+        flex: 1 1 45%;
+    }
+
+}
+
+
+/* Small devices (phones, 767px and below) */
+@media (max-width: 767px) {
+    header h1 {
+        font-size: 1.5rem;
+    }
+    nav {
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+    nav a {
+        font-size: 0.9rem;
+    }
+    section {
+        padding: 1rem;
+    }
+    .projects {
+        flex-direction: column;
+    }
+    .project-card {
+        flex: 1 1 100%;
+    }
+    form {
+        width: 100%;
+    }
+
+}
+#visit-timer {
+    text-align: center;
+    color: #666;
+    margin-top: 0.5rem;
+}
+
