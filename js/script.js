@@ -43,13 +43,22 @@ window.addEventListener("DOMContentLoaded", () => {
 function updateGreeting() {
     const greetText = document.getElementById("greet-text");
     const hour = new Date().getHours();
+    const name = localStorage.getItem("visitorName");
+    let greeting = "";
+    let emoji="";
 
     if (hour < 12) {
-        greetText.textContent = "Good Morning! 🌅 ";
+        greeting= "Good Morning! 🌅 ";
     } else if (hour < 18) {
-        greetText.textContent = "Good Afternoon! ☀️";
+        greeting = "Good Afternoon! ☀️";
     } else {
-        greetText.textContent = "Good Evening! 🌙 ";
+        greeting = "Good Evening! 🌙 ";
+    }
+    // If name exists, attach it
+    if (name) {
+        greetText.textContent = `${greeting}, ${name}! ${emoji}`;
+    } else {
+        greetText.textContent = `${greeting}! ${emoji}`;
     }
 }
 // Fetch quote API
@@ -320,9 +329,7 @@ function setupAuth() {
         if (visitTimerId) clearInterval(visitTimerId);
         document.getElementById("visit-timer").textContent = "You have just arrived ";
         localStorage.removeItem("visitorName");
-
-        const msg = document.getElementById("savedNameMessage");
-        if (msg) msg.textContent = "";
+        updateGreeting();
 
         const input = document.getElementById("saveNameInput");
         if (input) input.value = "";
@@ -367,7 +374,7 @@ function setupNameMemory() {
 
     // Show old name
     if (savedName) {
-        msg.textContent = `Welcome back, ${savedName}!`;
+        updateGreeting();
     }
 
     btn.addEventListener("click", () => {
@@ -375,7 +382,7 @@ function setupNameMemory() {
         if (name.length < 1) return;
 
         localStorage.setItem("visitorName", name);
-        msg.textContent = `Welcome back, ${name}!`;
+        updateGreeting();
         input.value = "";
     });
 }
