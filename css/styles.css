@@ -266,4 +266,21 @@ button:hover{
     color: #666;
     margin-top: 0.5rem;
 }
+#auth-section {
+    margin-top: 10px;
+}
+
+#loginStatus {
+    font-size: 0.9rem;
+    margin-top: 5px;
+}
+
+#saveNameInput {
+    padding: 8px;
+}
+
+.weather-box {
+    text-align: center;
+}
+
 

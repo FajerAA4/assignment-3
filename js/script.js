@@ -30,10 +30,13 @@ window.addEventListener("DOMContentLoaded", () => {
     startVisitTimer();
 
     // Add event listeners
-    document.getElementById("searchInput").addEventListener("input", applyFilter);
-    document.getElementById("filterSelect").addEventListener("change", applyFilter);
-    const levelSelect = document.getElementById("levelSelect");
-    const sortSelect = document.getElementById("sortSelect");
+    const searchInput  = document.getElementById("searchInput");
+    const filterSelect = document.getElementById("filterSelect");
+    const levelSelect  = document.getElementById("levelSelect");
+    const sortSelect   = document.getElementById("sortSelect");
+
+    searchInput.addEventListener("input", applyFilter);
+    filterSelect.addEventListener("change", applyFilter);
     if (levelSelect) levelSelect.addEventListener("change", applyFilter);
     if (sortSelect) sortSelect.addEventListener("change", applyFilter);
 
@@ -290,13 +293,12 @@ function startVisitTimer() {
 
     visitTimerId =setInterval(() => {
         seconds++;
-        if (seconds < 60) {
-            timerEl.textContent = `You have been on this page for ${seconds} second${seconds === 1 ? "" : "s"}.`;
-        } else {
             const mins = Math.floor(seconds / 60);
             const secs = seconds % 60;
-            timerEl.textContent = `You have been on this page for ${mins} min ${secs} sec.`;
-        }
+        timerEl.textContent = mins === 0
+            ? `You have been on this page for ${secs} seconds.`
+            : `You have been on this page for ${mins} min ${secs} sec.`;
+
     }, 1000);
 }
 function setupAuth() {
@@ -367,8 +369,6 @@ function setupProjectToggle() {
 function setupNameMemory() {
     const input = document.getElementById("saveNameInput");
     const btn = document.getElementById("saveNameBtn");
-    const msg = document.getElementById("savedNameMessage");
-
     const savedName = localStorage.getItem("visitorName");
 
     // Show old name
