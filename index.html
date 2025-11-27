@@ -10,11 +10,6 @@
 </head>
 <body>
 <!--header with profile picture, navigation and dark mode-->
-<div id="auth-section">
-    <button id="loginBtn">Login</button>
-    <button id="logoutBtn" style="display:none;">Logout</button>
-    <p id="loginStatus" ></p>
-</div>
 
 <header>
     <img src="assets/img_3.webp" loading="lazy" alt="My Profile Picture">
@@ -25,6 +20,11 @@
         <a href="#contact">Contact Me</a>
     </nav>
     <button onclick="toggleTheme()"> Toggle Dark Mode</button>
+    <div id="auth-section">
+        <button id="loginBtn">Login</button>
+        <button id="logoutBtn" style="display:none;">Logout</button>
+        <p id="loginStatus" ></p>
+    </div>
 </header>
 <!-- Greeting message Section updated by the js file  -->
 <section id="greeting">
