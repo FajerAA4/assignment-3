@@ -205,9 +205,8 @@ function setupContactForm() {
     form.addEventListener("submit", (e) => {
         e.preventDefault();
 
+        feedback.className = "";
         feedback.style.display = "none";
-        feedback.style.color = "red";
-        feedback.style.opacity = "1";
 
         if (
             nameInput.value.trim() === "" ||
@@ -215,6 +214,7 @@ function setupContactForm() {
             messageInput.value.trim() === ""
         ) {
             feedback.textContent = "⚠️ Please fill in all fields.";
+            feedback.className = "error";
             feedback.style.display = "block";
             return;
         }
@@ -227,8 +227,8 @@ function setupContactForm() {
         }
 
         // Success message
-        feedback.style.color = "green";
-        feedback.textContent = "✅ Thank you, your message has been sent successfully!";
+        feedback.className = "success";
+        feedback.textContent = "✅ Message sent successfully!";
         feedback.style.display = "block";
 
         // Reset form
