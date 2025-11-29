@@ -1,11 +1,6 @@
-* {
-    transition: background-color 0.3s ease,
-    color 0.3s ease,
-    border-color 0.3s ease,
-    box-shadow 0.3s ease,
-    transform 0.2s ease;
+html, body {
+    overflow-x: hidden;
 }
-
 /* base body styling*/
 body{
     font-family:'Segoe UI', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
@@ -14,7 +9,6 @@ body{
     line-height:1.7;
     background: #f7f7fb;
     color: #222;
-    transition: background 0.4s ease,color 0.4s ease;
     scroll-behavior: smooth;
 }
 /* header styling (Gradient background, white text) */
@@ -115,7 +109,7 @@ h2{
     text-align: center;
     background: #ffffff;
     box-shadow: 0 10px 24px rgba(0,0,0,0.08);
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    transition: transform 0.25s ease, box-shadow 0.25s ease, opacity 0.2s ease;
     animation: fadeIn 1s ease both;
 }
 .project-card:hover {
@@ -137,17 +131,33 @@ h2{
 }
 .controls input,
 .controls select {
-    padding: 10px;
-    border-radius: 5px;
-    border: 1px solid #ccc;
+    padding: 12px;
+    border-radius: 10px;
+    border: 1px solid #d0d0d0;
     font-size: 1rem;
-    transition: border-color 0.3s ease;
+    background: #ffffff;
+    transition:
+            border-color 0.2s ease,
+            box-shadow 0.2s ease,
+            transform 0.15s ease;
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg fill='%23999' viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M7 10l5 5 5-5'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 12px center;
+    background-size: 16px;
+    padding-right: 40px;
 }
+
 .controls input:focus,
 .controls select:focus {
-    border-color: #6a1b9a;
+    border-color: #5aa9e6;
+    box-shadow: 0 0 0 3px rgba(90, 169, 230, 0.25);
     outline: none;
 }
+.controls select:active,
+.controls input:active {
+}
+
 
 /* Project Tag Styling */
 .tag {
@@ -307,11 +317,13 @@ button:hover{
 
 }
 
-
 /* Small devices (phones, 767px and below) */
 @media (max-width: 767px) {
     header h1 {
         font-size: 1.5rem;
+        max-width: 90%;
+        margin-left: auto;
+        margin-right: auto;
     }
     nav {
         display: flex;
@@ -333,6 +345,30 @@ button:hover{
     form {
         width: 100%;
     }
+    header {
+        padding: 2.5rem 1rem 2rem;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    html, body {
+        overflow-x: hidden;
+    }
+    .controls {
+        flex-direction: column;
+        width: 100%;
+        align-items: stretch;
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 0.75rem;
+    }
+
+    .controls input,
+    .controls select {
+        width: 100%;
+        box-sizing: border-box;
+    }
 
 }
 @keyframes pop {
@@ -352,10 +388,11 @@ button:hover{
     margin-top: 0.5rem;
 }
 #auth-section {
-    margin-top: 15px;
+    margin-top: 1rem;
     display: flex;
+    flex-direction: column;
     justify-content: center;
-    gap: 8px;
+    gap: 6px;
     align-items: center;
 }
 #auth-section button {

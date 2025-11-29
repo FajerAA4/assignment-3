@@ -136,7 +136,7 @@ function renderProjects(list) {
           <h3>${p.title}</h3>
           <p>${p.desc}</p>
           <p><strong>Level:</strong> ${p.level}</p>
-            <button class="tag" onclick="alert('Feature coming soon!')">${p.tag}</button>
+            <button class="tag">${p.tag}</button>
     `;
         container.appendChild(card);
     });
@@ -153,6 +153,12 @@ function applyFilter() {
     const sortBy = document.getElementById("sortSelect")
         ? document.getElementById("sortSelect").value
         : "newest";
+    const list = document.getElementById("projectList");
+    list.style.opacity = "0.4";
+
+    setTimeout(() => {
+        list.style.opacity = "1";
+    }, 150);
 
     // 1) filter by tag + level + search
     let filtered = projects.filter(p =>
