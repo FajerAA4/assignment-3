@@ -44,7 +44,7 @@ The site includes dynamic features such as weather reporting, quote loading, pro
 
 ### Step 1 — Clone the repository
 ```bash
-git clone https://github.com/FajerAA4/assignment-2.git
+git clone https://github.com/FajerAA4/assignment-3.git
 
 ```
 ### Step 2 — Navigate into the project folder
